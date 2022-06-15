@@ -4,6 +4,7 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
 
 
@@ -15,9 +16,10 @@ public class AddToCartTest {
     @DisplayName("Добавление товара в корзину через быструю корзину")
     public void shouldAddToCartTest() {
 
-        open("http://automationpractice.com/index.php");
+
 
         step("Навести курсор на фото товара", () -> {
+            open("http://automationpractice.com/index.php");
             TestPages.mainPage.itemImg()
                     .hover();
         });
@@ -25,11 +27,13 @@ public class AddToCartTest {
         step("Кликнуть по кнопке Add to cart", () -> {
             TestPages.mainPage.addToCartButton()
                     .click();
+            sleep(2000);
         });
 
         step("Кликнуть по кнопке Proceed to checkout", () -> {
             TestPages.mainPage.goToOrdersButton()
                     .click();
+            sleep(2000);
         });
 
         step("Проверить, что в корзине отображается добавленный товар", () -> {
