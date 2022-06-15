@@ -15,11 +15,23 @@ public class MainPage {
     }
 
     public SelenideElement itemDescription() {
-        return $("#homefeatured .right-block h5 a.product-name[title=\"Faded Short Sleeve T-shirts\"]").as("описание товара");
+        return $("#homefeatured .right-block h5 a.product-name[title='Faded Short Sleeve T-shirts']").as("описание товара");
     }
 
     public SelenideElement itemImg() {
-        return $("#homefeatured li .product_img_link[href=\"http://automationpractice.com/index.php?id_product=1&controller=product\"]").as("изображение товара");
+        return $("#homefeatured li .product_img_link[href='http://automationpractice.com/index.php?id_product=1&controller=product']").as("изображение товара");
+    }
+
+    public SelenideElement emailInput() {
+        return $("#newsletter-input").as("поле ввода email");
+    }
+
+    public SelenideElement submitButton() {
+        return $("[name='submitNewsletter']").as("кнопка подтверждения отправки email");
+    }
+
+    public SelenideElement errorMessage() {
+        return $("[value='Invalid email address.']").as("сообщение об ошибке");
     }
 
 }
