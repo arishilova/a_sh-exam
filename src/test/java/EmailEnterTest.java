@@ -34,9 +34,11 @@ public class EmailEnterTest {
                     .click();
         });
 
-        step("Проверить, что в инпуте появилось сообщение об ошибке", () -> {
+        step("Проверить, что сообщение об ошибке появилось наверху страницы и в инпуте", () -> {
             TestPages.mainPage.errorMessage()
                     .shouldBe(Condition.visible);
+            TestPages.mainPage.errorBanner()
+                    .shouldHave(Condition.text(" Newsletter : Invalid email address."));
         });
     }
 
@@ -53,6 +55,14 @@ public class EmailEnterTest {
                 arguments(
                         "адреса без домена",
                         "test@mail"
+                ),
+                arguments(
+                        "адреса с пробелом",
+                        "t est@test.ru"
+                ),
+                arguments(
+                        "адреса с недопустимым символом",
+                        "t;est@test.ru"
                 )
         );
     }
